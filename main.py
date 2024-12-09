@@ -1,5 +1,5 @@
 from db_connection import connect_to_database, check_db_status
-from member import search_member, add_member
+from member import search_member, add_member, update_member, delete_member
 import textwrap
 
 def main():
@@ -29,6 +29,8 @@ def main():
                 =========================
                 1. 회원 검색
                 2. 회원 추가
+                3. 회원 정보 수정
+                4. 회원 삭제
                 =========================
                 """))
             sub_choice = input("회원 관리 메뉴 번호를 선택하세요: ")
@@ -36,6 +38,10 @@ def main():
                 search_member(connection)
             elif sub_choice == "2":
                 add_member(connection)
+            elif sub_choice == "3":
+                update_member(connection)
+            elif sub_choice == "4":
+                delete_member(connection)
         elif choice == "3":
             print("프로그램을 종료합니다.")
             break
