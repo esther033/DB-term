@@ -1,6 +1,8 @@
 from db_connection import connect_to_database, check_db_status
-from member import search_member, add_member, update_member, delete_member
-from activity import view_activities_by_club, add_activity, update_activity, delete_activity
+from member import *
+from activity import *
+from club import *
+from manager import *
 import textwrap
 
 def main():
@@ -17,7 +19,9 @@ def main():
         1. 데이터베이스 상태 확인
         2. 회원 관리
         3. 활동 관리
-        4. 종료
+        4. 동아리 관리
+        5. 조교 관리
+        6. 종료
         =========================
         """))
         choice = input("메뉴 번호를 선택하세요: ")
@@ -71,6 +75,53 @@ def main():
             elif sub_choice == "5":
                 continue
         elif choice == "4":
+            print(textwrap.dedent("""
+                =========================
+                === 동아리 관리 ===
+                =========================
+                1. 동아리 조회
+                2. 동아리 추가
+                3. 동아리 수정
+                4. 동아리 삭제
+                5. 뒤로 가기
+                =========================
+                """))
+            sub_choice = input("동아리 관리 메뉴 번호를 선택하세요: ")
+            if sub_choice == "1":
+                view_clubs(connection)
+            elif sub_choice == "2":
+                add_club(connection)
+            elif sub_choice == "3":
+                update_club(connection)
+            elif sub_choice == "4":
+                delete_club(connection)
+            elif sub_choice == "5":
+                continue
+        elif choice == "5":
+            print(textwrap.dedent("""
+                =========================
+                    === 조교 관리 ===
+                =========================
+                1. 조교 조회
+                2. 조교 추가
+                3. 조교 수정
+                4. 조교 삭제
+                3. 뒤로 가기
+                =========================
+                """))
+            sub_choice = input("조교 관리 메뉴 번호를 선택하세요: ")
+            if sub_choice == "1":
+                view_assistants(connection)
+            elif sub_choice == "2":
+                add_assistant(connection)
+            elif sub_choice == "3":
+                update_manager(connection)
+            elif sub_choice == "4":
+                delete_manager(connection)
+            elif sub_choice == "5":
+                continue
+
+        elif choice == "6":
             print("프로그램을 종료합니다.")
             break
         else:
