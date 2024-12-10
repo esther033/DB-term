@@ -1,6 +1,6 @@
 from db_connection import connect_to_database, check_db_status
 from member import search_member, add_member, update_member, delete_member
-from activity import view_activities_by_club, add_activity
+from activity import view_activities_by_club, add_activity, update_activity, delete_activity
 import textwrap
 
 def main():
@@ -54,7 +54,9 @@ def main():
                 =========================
                 1. 활동 조회 (동아리별 활동 목록 출력)
                 2. 활동 추가
-                3. 뒤로 가기
+                3. 활동 수정
+                4. 활동 삭제                
+                5. 뒤로 가기
                 =========================
                 """))
             sub_choice = input("활동 관리 메뉴 번호를 선택하세요: ")
@@ -63,6 +65,10 @@ def main():
             elif sub_choice == "2":
                 add_activity(connection)
             elif sub_choice == "3":
+                update_activity(connection)
+            elif sub_choice == "4":
+                delete_activity(connection)
+            elif sub_choice == "5":
                 continue
         elif choice == "4":
             print("프로그램을 종료합니다.")
